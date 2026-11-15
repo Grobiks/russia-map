@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Россия — интерактивная карта регионов</title>
+<meta name="description" content="Интерактивная схема России: 8 крупных регионов и 83 субъекта федерации. Реки, озёра, моря. Наведите или нажмите на регион, чтобы узнать название.">
+<meta name="theme-color" content="#F5F0EB">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23F5F0EB'/><path d='M14 26h36M20 26v18M32 18v26M44 26v18M14 44h36' stroke='%233B8ED7' stroke-width='4' fill='none' stroke-linecap='round'/></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <h1>РОССИЯ</h1>
+    <p>интерактивная схема регионов</p>
+  </div>
+
+  <div class="modes" role="group" aria-label="Что показывать при выборе">
+    <button type="button" data-mode="subject" class="on" aria-pressed="true">Субъекты</button>
+    <button type="button" data-mode="district" aria-pressed="false">Округа</button>
+  </div>
+
+  <div class="search">
+    <label class="sr" for="q">Поиск региона</label>
+    <input id="q" type="search" placeholder="Найти регион: Коми, Тверская…" autocomplete="off" spellcheck="false">
+    <span id="hits" class="hits" aria-live="polite"></span>
+  </div>
+
+  <div class="layers">
+    <label><input type="checkbox" id="t-labels" checked> Подписи</label>
+    <label><input type="checkbox" id="t-water" checked> Реки и озёра</label>
+  </div>
+</header>
+
+<main>
+  <div class="stage">
+    <svg id="map" role="img" aria-label="Схематическая карта России с регионами, реками и озёрами"></svg>
+  </div>
+
+  <div id="tip" class="tip" hidden></div>
+
+  <aside id="card" class="card" hidden>
+    <button type="button" id="close" class="card-close" aria-label="Закрыть">×</button>
+    <p class="card-kicker" id="card-kicker"></p>
+    <h2 class="card-title" id="card-title"></h2>
+    <p class="card-sub" id="card-sub"></p>
+    <div class="card-body" id="card-body"></div>
+  </aside>
+
+  <p class="hint" id="hint">Наведите на регион · нажмите, чтобы закрепить</p>
+</main>
+
+<footer class="bottom">
+  <span>Границы: geoBoundaries · Реки и озёра: Natural Earth · Проекция Альберса</span>
+  <span class="dl">
+    <a href="karta_rossii.svg" download>Скачать карту SVG</a>
+    <a href="shablony/" >Детали для аппликации</a>
+  </span>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

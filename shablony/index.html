@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Детали для аппликации — карта России</title>
+<meta name="description" content="Восемь деталей-шаблонов регионов России: SVG и PNG с прозрачным фоном, контур совпадает с картой.">
+<meta name="theme-color" content="#F5F0EB">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23F5F0EB'/><path d='M14 26h36M20 26v18M32 18v26M44 26v18M14 44h36' stroke='%233B8ED7' stroke-width='4' fill='none' stroke-linecap='round'/></svg>">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  body{min-height:100dvh}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px 24px 48px;width:100%}
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:8px}
+  .head h1{margin:0;font-size:26px;letter-spacing:.3em;font-weight:700}
+  .head p{margin:8px 0 0;color:var(--muted);font-size:13.5px;max-width:640px}
+  .back{font-size:13.5px;color:var(--accent);text-decoration:none}
+  .back:hover{text-decoration:underline}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:18px;
+    margin-top:22px;
+  }
+  .tile{
+    background:var(--paper);
+    border:1px solid rgba(63,58,52,.10);
+    border-radius:16px;
+    padding:14px 14px 16px;
+    box-shadow:0 6px 20px rgba(63,58,52,.05);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .tile .pic{
+    background:#fff;
+    border-radius:10px;
+    height:180px;
+    display:grid;
+    place-items:center;
+    padding:8px;
+  }
+  .tile .pic img{max-width:100%;max-height:164px;display:block}
+  .tile h2{margin:0;font-size:15px;letter-spacing:.06em}
+  .tile .size{margin:0;font-size:12px;color:var(--muted)}
+  .tile .links{display:flex;gap:10px;margin-top:auto;font-size:13px}
+  .tile .links a{color:var(--accent);text-decoration:none}
+  .tile .links a:hover{text-decoration:underline}
+  .note{
+    margin-top:26px;padding:16px 18px;border-left:3px solid var(--blue);
+    background:rgba(59,142,215,.06);border-radius:0 10px 10px 0;font-size:13.5px;color:#4C453D;
+  }
+  .note b{font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div>
+      <h1>ДЕТАЛИ</h1>
+      <p>Восемь шаблонов для аппликации. Все в одном масштабе с картой: напечатайте на 100 % — детали сложатся в целую карту. Контур каждой детали — тот же самый, что на карте.</p>
+    </div>
+    <a class="back" href="../">← На карту</a>
+  </div>
+
+  <div class="grid">
+    <div class="tile">
+      <div class="pic"><img src="01_centralnyy.png" alt="Контур региона Центр"></div>
+      <h2>ЦЕНТР</h2>
+      <p class="size">9 × 8 см</p>
+      <div class="links"><a href="01_centralnyy.svg" download>SVG</a><a href="01_centralnyy.png" download>PNG</a></div>
+    </div>
+    <div class="tile">
+      <div class="pic"><img src="02_severo-zapad.png" alt="Контур Северо-Западного региона"></div>
+      <h2>СЕВЕРО-ЗАПАД</h2>
+      <p class="size">21 × 12 см</p>
+      <div class="links"><a href="02_severo-zapad.svg" download>SVG</a><a href="02_severo-zapad.png" download>PNG</a></div>
+    </div>
+    <div class="tile">
+      <div class="pic"><img src="03_yug.png" alt="Контур Южного региона"></div>
+      <h2>ЮГ</h2>
+      <p class="size">7 × 7 см</p>
+      <div class="links"><a href="03_yug.svg" download>SVG</a><a href="03_yug.png" download>PNG</a></div>
+    </div>
+    <div class="tile">
+      <div class="pic"><img src="04_severnyy-kavkaz.png" alt="Контур Северного Кавказа"></div>
+      <h2>СЕВЕРНЫЙ КАВКАЗ</h2>
+      <p class="size">4 × 7 см</p>
+      <div class="links"><a href="04_severnyy-kavkaz.svg" download>SVG</a><a href="04_severnyy-kavkaz.png" download>PNG</a></div>
+    </div>
+    <div class="tile">
+      <div class="pic"><img src="05_povolzhe.png" alt="Контур Поволжья"></div>
+      <h2>ПОВОЛЖЬЕ</h2>
+      <p class="size">11 × 11 см</p>
+      <div class="links"><a href="05_povolzhe.svg" download>SVG</a><a href="05_povolzhe.png" download>PNG</a></div>
+    </div>
+    <div class="tile">
+      <div class="pic"><img src="06_ural.png" alt="Контур Урала"></div>
+      <h2>УРАЛ</h2>
+      <p class="size">14 × 13 см</p>
+      <div class="links"><a href="06_ural.svg" download>SVG</a><a href="06_ural.png" download>PNG</a></div>
+    </div>
+    <div class="tile">
+      <div class="pic"><img src="07_sibir.png" alt="Контур Сибири"></div>
+      <h2>СИБИРЬ</h2>
+      <p class="size">21 × 24 см</p>
+      <div class="links"><a href="07_sibir.svg" download>SVG</a><a href="07_sibir.png" download>PNG</a></div>
+    </div>
+    <div class="tile">
+      <div class="pic"><img src="08_dalniy-vostok.png" alt="Контур Дальнего Востока"></div>
+      <h2>ДАЛЬНИЙ ВОСТОК</h2>
+      <p class="size">22 × 29 см</p>
+      <div class="links"><a href="08_dalniy-vostok.svg" download>SVG</a><a href="08_dalniy-vostok.png" download>PNG</a></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Как печатать.</b> SVG — вектор, печатается в любом размере без потерь; в диалоге печати выберите «100 %»,
+    а не «вписать в страницу». PNG уже содержат нужное разрешение в метаданных.
+    Дальнему Востоку нужен лист А3; если есть только А4 — печатайте всё с масштабом 70 %.
+  </div>
+</div>
+</body>
+</html>
