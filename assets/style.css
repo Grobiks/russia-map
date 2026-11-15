@@ -120,6 +120,32 @@ body{
 }
 .fs:hover{border-color:var(--accent);color:var(--accent)}
 
+/* запасной «полный экран», если браузер запретил настоящий */
+body.focus .top{
+  position:fixed;
+  top:0;
+  right:0;
+  left:auto;
+  padding:10px;
+  z-index:60;
+  background:transparent;
+}
+body.focus .top > *{display:none}
+body.focus .top > .fs{
+  display:grid;
+  background:rgba(255,253,250,.92);
+  box-shadow:0 4px 14px rgba(63,58,52,.14);
+}
+body.focus .bottom{display:none}
+body.focus .stage{padding:6px 6px 6px}
+
+.ver{
+  font-size:10.5px;
+  color:#B4A897;
+  letter-spacing:.08em;
+  margin-right:14px;
+}
+
 /* ---------- карта ---------- */
 main{
   position:relative;

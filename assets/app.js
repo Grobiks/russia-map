@@ -351,15 +351,37 @@
 
   /* ---------- во весь экран ---------- */
   var fsBtn = document.getElementById('fs');
-  if (fsBtn) {
-    if (!document.documentElement.requestFullscreen) {
-      fsBtn.hidden = true;
-    } else {
-      fsBtn.addEventListener('click', function () {
-        if (document.fullscreenElement) document.exitFullscreen();
-        else document.documentElement.requestFullscreen();
-      });
+
+  function fsElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+  function fsRequest(el) {
+    var fn = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (!fn) return Promise.reject(new Error('unsupported'));
+    try {
+      var p = fn.call(el);
+      return p && p.then ? p : Promise.resolve();
+    } catch (e) {
+      return Promise.reject(e);
     }
+  }
+  function fsExit() {
+    var fn = document.exitFullscreen || document.webkitExitFullscreen;
+    if (fn) fn.call(document);
+  }
+
+  if (fsBtn && fsRequest && (document.getElementById('map'))) {
+    fsBtn.addEventListener('click', function () {
+      if (fsElement()) { fsExit(); return; }
+      if (document.body.classList.contains('focus')) {
+        document.body.classList.remove('focus');
+        return;
+      }
+      fsRequest(document.documentElement).catch(function () {
+        // браузер не дал полноэкранный режим — просто прячем шапку и подвал
+        document.body.classList.add('focus');
+      });
+    });
   }
 })();
 
