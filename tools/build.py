@@ -651,6 +651,18 @@ def build_web(adm, dist_geoms, country, rivers, lakes, proj, path):
     data["seas"] = [{"name": n, "x": round(proj(lon, lat)[0]), "y": round(proj(lon, lat)[1])}
                     for n, lon, lat in SEAS]
 
+    # кадр для сайта — по фактическому содержимому, без пустых полей плаката
+    x0, y0, x1, y1 = land.bounds
+    for s in data["seas"]:
+        x0 = min(x0, s["x"] - 70)
+        x1 = max(x1, s["x"] + 70)
+        y0 = min(y0, s["y"] - 26)
+        y1 = max(y1, s["y"] + 26)
+    pad = 16
+    x0, y0 = max(0, x0 - pad), max(0, y0 - pad)
+    x1, y1 = min(MAP_W, x1 + pad), min(MAP_H, y1 + pad)
+    data["vb"] = [round(x0), round(y0), round(x1 - x0), round(y1 - y0)]
+
     js = "window.MAP_DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n"
     open(path, "w", encoding="utf-8").write(js)
     print(f"  -> {os.path.basename(path)} {len(js)/1024:.0f} КБ "

@@ -22,7 +22,8 @@
   var labelsToggle = document.getElementById('t-labels');
   var waterToggle = document.getElementById('t-water');
 
-  svg.setAttribute('viewBox', '0 0 ' + D.w + ' ' + D.h);
+  var vb = D.vb || [0, 0, D.w, D.h];
+  svg.setAttribute('viewBox', vb.join(' '));
   svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
   function el(name, attrs, parent) {
@@ -143,6 +144,14 @@
     } catch (err) { /* file:// и старые браузеры могут запрещать — не критично */ }
   }
 
+  /* карточка встаёт с той стороны, где не закроет выбранный регион */
+  function placeCard(el) {
+    if (!el || !el.getBoundingClientRect) return;
+    var r = el.getBoundingClientRect();
+    var cx = (r.left + r.right) / 2;
+    card.classList.toggle('right', cx < window.innerWidth / 2 + 60);
+  }
+
   /* ---------- карточка ---------- */
   function selectSubject(s) {
     if (!s) return;
@@ -162,6 +171,7 @@
     card.hidden = false;
     hideHint();
     setHash(s.iso);
+    placeCard(p);
   }
 
   function selectDistrict(id) {
@@ -186,6 +196,7 @@
     card.hidden = false;
     hideHint();
     setHash(id);
+    placeCard(d.__el);
   }
 
   cardBody.addEventListener('click', function (e) {
@@ -337,5 +348,19 @@
   centerStage();
   window.addEventListener('load', centerStage);
   window.addEventListener('orientationchange', function () { setTimeout(centerStage, 250); });
+
+  /* ---------- во весь экран ---------- */
+  var fsBtn = document.getElementById('fs');
+  if (fsBtn) {
+    if (!document.documentElement.requestFullscreen) {
+      fsBtn.hidden = true;
+    } else {
+      fsBtn.addEventListener('click', function () {
+        if (document.fullscreenElement) document.exitFullscreen();
+        else document.documentElement.requestFullscreen();
+      });
+    }
+  }
 })();
+
 
